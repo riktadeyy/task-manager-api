@@ -4,6 +4,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import taskRoutes from "./routes/taskRoutes.js";
 import { connectDB } from "./config/db.js";
+import swaggerDocs from "./config/swagger.js";
 
 dotenv.config();
 
@@ -12,6 +13,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/api/tasks", taskRoutes);
+
+swaggerDocs(app);
 
 (async function db() {
     try {
